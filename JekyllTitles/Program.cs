@@ -36,8 +36,8 @@ namespace JekyllTitles
                 {
                     var line = lines[i];
                     newlines.Add(line);
-                    if (line.StartsWith("##") && line[2] != '#')
-                        titles.Add("\"" + line.Substring(2).Trim().Replace("\"", "\\\"") + "\"");
+                    if (line.StartsWith("##"))
+                        titles.Add("\"" + line.Substring(2).Trim(' ', '#').Replace("\"", "\\\"") + "\"");
                 }
 
                 newlines[titlePos] = string.Format("contents: [{0}]", string.Join(", ", titles));
